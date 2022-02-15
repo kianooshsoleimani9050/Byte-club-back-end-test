@@ -1,0 +1,24 @@
+services:
+  BYTE-CLUB-BACK-END-TEST:
+    image: byte-club-backend-test
+    ports:
+      - 3000:3000
+    environment:
+      - MONGODB_URL=mongodb://admin:password@mongodb
+      - JWT_TOKEN_SECRET=s6v9y$B&E)H@McQeThWmZq4t7w!z%C*F-JaNdRgUjXn2r5u8x/A?D(G+KbPeShVm
+      - JWT_EXPIERESIN=30d
+  mongodb:
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+  mongo-express:
+    image: mongo-express
+    ports:
+      - 8080:8081
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=password
+      - ME_CONFIG_MONGODB_SERVER=mongodb
